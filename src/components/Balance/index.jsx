@@ -7,7 +7,7 @@ const Balance = ({ balance, income, expences}) => {
     <section className={css.balance}>
       <span>⬆{income}$</span>
       <span>⬇{expences}$</span>
-      <span>Balance: {balance}$</span>
+      <span>Deposit balance: {balance}$</span>
     </section>
 
   )

@@ -45,13 +45,13 @@ class Dashboard extends Component {
 
   onDeposit(amount) {
     this.newTransaction(amount, 'deposit');
-    this.setState(prevState => ({ balance: prevState.balance - +amount }));
+    this.setState(prevState => ({ balance: prevState.balance + +amount }));
     toast.success("Операция успешна!");
   }
 
   onWithdraw(amount) {
     this.newTransaction(amount, 'withdrawal');
-    this.setState(prevState => ({ balance: prevState.balance + +amount }));
+    this.setState(prevState => ({ balance: prevState.balance - +amount }));
     toast.success("Операция успешна!");
   }
 
@@ -69,13 +69,13 @@ class Dashboard extends Component {
   }
 
   calcIncome() {
-    const filteredArr = this.state.transactions.filter(el => el.type === "withdrawal"),
+    const filteredArr = this.state.transactions.filter(el => el.type === "deposit"),
       sum = filteredArr.reduce((acc, el) => acc + +el.amount, 0);
     return sum;
   }
 
   calcExpences() {
-    const filteredArr = this.state.transactions.filter(el => el.type === "deposit"),
+    const filteredArr = this.state.transactions.filter(el => el.type === "withdrawal"),
       sum = filteredArr.reduce((acc, el) => acc + +el.amount, 0);
     return sum;
   }

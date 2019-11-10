@@ -15,11 +15,11 @@ const Controls = ({ onDeposit, onWithdraw, balance }) => {
   const handleQuery = ({ target }) => {
     const { amount } = state;
     if (!amount || amount <= 0) return showMsg('Введите сумму для проведения операции!');
-    if (target.name === "deposit") {
-      if (state.balance < amount) return showMsg("На счету недостаточно средств для проведения операции!");
-      onDeposit(+amount.replace(/^0+/, ''));
+    if (target.name === "withdraw") {
+      if (state.balance < amount) return showMsg("На счету недостаточно средств для снятия!");
+      onWithdraw(+amount.replace(/^0+/, ''));
     }
-    if (target.name === "withdraw") onWithdraw(+amount.replace(/^0+/, ''));
+    if (target.name === "deposit") onDeposit(+amount.replace(/^0+/, ''));
     target.parentNode.querySelector('[name="amount"]').value = 0;
   };
 
@@ -31,7 +31,7 @@ const Controls = ({ onDeposit, onWithdraw, balance }) => {
   return(
     <section className={css.controls}>
       <input type="number" placeholder="Введите сумму" name="amount" onChange={handleSetAmount}/>
-      <button type="button" name="deposit" onClick={handleQuery}>Deposit</button>
+      <button type="button" name="deposit" onClick={handleQuery}>Put on deposit</button>
       <button type="button" name='withdraw' onClick={handleQuery}>Withdraw</button>
     </section>
   )  
