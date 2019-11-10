@@ -31,7 +31,7 @@ const Controls = ({ onDeposit, onWithdraw, balance }) => {
   return(
     <section className={css.controls}>
       <input type="number" placeholder="Введите сумму" name="amount" onChange={handleSetAmount}/>
-      <button type="button" name="deposit" onClick={handleQuery}>Put on deposit</button>
+      <button type="button" name="deposit" onClick={handleQuery}>Deposit</button>
       <button type="button" name='withdraw' onClick={handleQuery}>Withdraw</button>
     </section>
   )  
