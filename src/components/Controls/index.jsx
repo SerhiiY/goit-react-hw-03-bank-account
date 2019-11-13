@@ -16,11 +16,11 @@ const Controls = ({ onDeposit, onWithdraw, balance }) => {
     const { amount } = state;
     if (!amount || amount <= 0) return showMsg('Введите сумму для проведения операции!');
     if (target.name === "withdraw") {
-      if (state.balance < amount) return showMsg("На счету недостаточно средств для выполнения операции!");
+      if (state.balance < amount) return showMsg("На счету недостаточно средств для проведения операции!");
       onWithdraw(+amount.replace(/^0+/, ''));
     }
     if (target.name === "deposit") onDeposit(+amount.replace(/^0+/, ''));
-    target.parentNode.querySelector('[name="amount"]').value = 0;
+    target.parentNode.querySelector('[name="amount"]').value = '';
   };
 
 
